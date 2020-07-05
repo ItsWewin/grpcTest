@@ -2,13 +2,10 @@ package main
 
 import (
 	"context"
-	"crypto/tls"
-	"crypto/x509"
 	"fmt"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials"
-	"io/ioutil"
 	"log"
+	"mayihahah.com/grpc/helper"
 	"mayihahah.com/grpc/services"
 )
 
@@ -18,23 +15,28 @@ func main() {
 	//	log.Fatal(err)
 	//}
 
-	cert, err := tls.LoadX509KeyPair("cert/client.pem", "cert/client.key")
+	//cert, err := tls.LoadX509KeyPair("cert/client.pem", "cert/client.key")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//
+	//certPool := x509.NewCertPool()
+	//ca, err := ioutil.ReadFile("cert/ca.pem")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//certPool.AppendCertsFromPEM(ca)
+	//
+	//creds := credentials.NewTLS(&tls.Config{
+	//	Certificates: []tls.Certificate{cert},
+	//	ServerName:   "localhost",
+	//	RootCAs: 	  certPool,
+	//})
+
+	creds, err := helper.GetClientCreds()
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	certPool := x509.NewCertPool()
-	ca, err := ioutil.ReadFile("cert/ca.pem")
-	if err != nil {
-		log.Fatal(err)
-	}
-	certPool.AppendCertsFromPEM(ca)
-
-	creds := credentials.NewTLS(&tls.Config{
-		Certificates: []tls.Certificate{cert},
-		ServerName:   "localhost",
-		RootCAs: 	  certPool,
-	})
 
 	conn, err := grpc.Dial(":8081", grpc.WithTransportCredentials(creds))
 	if err != nil {
