@@ -45,7 +45,12 @@ func main() {
 	defer conn.Close()
 
 	prodClient := services.NewProdServiceClient(conn)
-	prodRes, err := prodClient.GetProdStock(context.Background(), &services.ProdRequest{ProdId: 1000})
+	//prodRes, err := prodClient.GetProdStock(context.Background(), &services.ProdRequest{ProdId: 1000})
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+
+	prodRes, err := prodClient.GetProdStocks(context.Background(), &services.QuerySize{Size:10})
 	if err != nil {
 		log.Fatal(err)
 	}
