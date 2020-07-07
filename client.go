@@ -50,7 +50,10 @@ func main() {
 	//	log.Fatal(err)
 	//}
 
-	prodRes, err := prodClient.GetProdStocks(context.Background(), &services.QuerySize{Size:10})
+	prodRes, err := prodClient.GetProdStocksByArea(
+		context.Background(),
+		&services.ProdRequest{ProdId:   10, ProdArea: services.ProdAreas_B},
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
