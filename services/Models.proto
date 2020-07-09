@@ -1,0 +1,16 @@
+syntax="proto3";
+package services;
+option go_package = ".;services";
+
+message ProdModel {
+    int32 prod_id=1;
+    string prod_name=2;
+    float prod_price=3;
+}
+
+message OrderMain {
+    int32 order_d=1;
+    string order_no=2;
+    int32 user_id=3;
+    float order_money=4;
+}

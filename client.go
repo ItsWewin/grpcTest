@@ -50,13 +50,18 @@ func main() {
 	//	log.Fatal(err)
 	//}
 
-	prodRes, err := prodClient.GetProdStocksByArea(
-		context.Background(),
-		&services.ProdRequest{ProdId:   10, ProdArea: services.ProdAreas_B},
-	)
+	//prodRes, err := prodClient.GetProdStocksByArea(
+	//	context.Background(),
+	//	&services.ProdRequest{ProdId:   10, ProdArea: services.ProdAreas_B},
+	//)
+
+	prodInfo, err := prodClient.GetProdInfo(context.Background(), &services.ProdRequest{
+		ProdId:   100,
+		ProdArea: 0,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(prodRes)
+	fmt.Println(prodInfo)
 }
