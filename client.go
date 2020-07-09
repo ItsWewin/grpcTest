@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc"
 	"log"
 	"mayihahah.com/grpc/helper"
 	"mayihahah.com/grpc/services"
+	"time"
 )
 
 func main() {
@@ -44,24 +46,19 @@ func main() {
 	}
 	defer conn.Close()
 
-	prodClient := services.NewProdServiceClient(conn)
-	//prodRes, err := prodClient.GetProdStock(context.Background(), &services.ProdRequest{ProdId: 1000})
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-
-	//prodRes, err := prodClient.GetProdStocksByArea(
-	//	context.Background(),
-	//	&services.ProdRequest{ProdId:   10, ProdArea: services.ProdAreas_B},
-	//)
-
-	prodInfo, err := prodClient.GetProdInfo(context.Background(), &services.ProdRequest{
-		ProdId:   100,
-		ProdArea: 0,
+	orderClient := services.NewOrderServiceClient(conn)
+	t := timestamp.Timestamp{Seconds: time.Now().Unix()}
+	resp, err := orderClient.NewOrder(context.Background(), &services.OrderMain{
+		OrderId:     12345677,
+		OrderNo:    "orderNO-12345677",
+		UserId:     1,
+		OrderMoney: 1234.567,
+		OrderTime:  &t,
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(prodInfo)
+
+	fmt.Println(resp)
 }
