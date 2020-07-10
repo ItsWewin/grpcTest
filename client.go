@@ -48,13 +48,13 @@ func main() {
 
 	orderClient := services.NewOrderServiceClient(conn)
 	t := timestamp.Timestamp{Seconds: time.Now().Unix()}
-	resp, err := orderClient.NewOrder(context.Background(), &services.OrderMain{
+	resp, err := orderClient.NewOrder(context.Background(), &services.OrderRequest{OrderMain: &services.OrderMain{
 		OrderId:     12345677,
 		OrderNo:    "orderNO-12345677",
 		UserId:     1,
 		OrderMoney: 1234.567,
 		OrderTime:  &t,
-	})
+	}} )
 	if err != nil {
 		log.Fatal(err)
 	}
