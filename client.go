@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
+	"io"
 	"log"
 	"mayihahah.com/grpc/helper"
 	"mayihahah.com/grpc/services"
@@ -22,11 +23,21 @@ func main() {
 	defer conn.Close()
 
 	userClient := services.NewUserServiceClient(conn)
-	userIdList := []int32{1, 2, 3, 4, 5, 6}
-	resp, err := userClient.GetUsersInfo(context.Background(), &services.UserRequest{UserIds: userIdList})
+	userIdList := []int32{1, 2, 3, 4, 5, 6, 7}
+	stream, err := userClient.GetUserInfoByServerStream(context.Background(), &services.UserRequest{UserIds: userIdList})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(resp.Users)
+	for {
+		res, err := stream.Recv()
+		switch {
+		case err != io.EOF:
+			break
+		case err != nil:
+			log.Fatal(err)
+		}
+
+		fmt.Println(res.Users)
+	}
 }
