@@ -137,7 +137,7 @@ var file_User_proto_rawDesc = []byte{
 	0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x24, 0x0a, 0x05,
 	0x75, 0x73, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x73, 0x65,
 	0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x05, 0x75, 0x73, 0x65,
-	0x72, 0x73, 0x32, 0x86, 0x02, 0x0a, 0x0b, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x72, 0x73, 0x32, 0xd8, 0x02, 0x0a, 0x0b, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x12, 0x5b, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x73, 0x49, 0x6e,
 	0x66, 0x6f, 0x12, 0x15, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x55, 0x73,
 	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x73, 0x65, 0x72, 0x76,
@@ -153,9 +153,14 @@ var file_User_proto_rawDesc = []byte{
 	0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x12, 0x15, 0x2e, 0x73, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x1a, 0x16, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65,
-	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x28, 0x01, 0x42, 0x0c, 0x5a, 0x0a, 0x2e,
-	0x3b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x28, 0x01, 0x12, 0x50, 0x0a, 0x1b, 0x47,
+	0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x42, 0x6f, 0x74, 0x68,
+	0x53, 0x69, 0x64, 0x65, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x12, 0x15, 0x2e, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x16, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x28, 0x01, 0x30, 0x01, 0x42, 0x0c, 0x5a,
+	0x0a, 0x2e, 0x3b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -181,11 +186,13 @@ var file_User_proto_depIdxs = []int32{
 	0, // 1: services.UserService.GetUsersInfo:input_type -> services.UserRequest
 	0, // 2: services.UserService.GetUserInfoByServerStream:input_type -> services.UserRequest
 	0, // 3: services.UserService.GetUserInfoByClientStream:input_type -> services.UserRequest
-	1, // 4: services.UserService.GetUsersInfo:output_type -> services.UserResponse
-	1, // 5: services.UserService.GetUserInfoByServerStream:output_type -> services.UserResponse
-	1, // 6: services.UserService.GetUserInfoByClientStream:output_type -> services.UserResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
+	0, // 4: services.UserService.GetUserInfoByBothSideStream:input_type -> services.UserRequest
+	1, // 5: services.UserService.GetUsersInfo:output_type -> services.UserResponse
+	1, // 6: services.UserService.GetUserInfoByServerStream:output_type -> services.UserResponse
+	1, // 7: services.UserService.GetUserInfoByClientStream:output_type -> services.UserResponse
+	1, // 8: services.UserService.GetUserInfoByBothSideStream:output_type -> services.UserResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -258,6 +265,7 @@ type UserServiceClient interface {
 	GetUsersInfo(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
 	GetUserInfoByServerStream(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (UserService_GetUserInfoByServerStreamClient, error)
 	GetUserInfoByClientStream(ctx context.Context, opts ...grpc.CallOption) (UserService_GetUserInfoByClientStreamClient, error)
+	GetUserInfoByBothSideStream(ctx context.Context, opts ...grpc.CallOption) (UserService_GetUserInfoByBothSideStreamClient, error)
 }
 
 type userServiceClient struct {
@@ -343,11 +351,43 @@ func (x *userServiceGetUserInfoByClientStreamClient) CloseAndRecv() (*UserRespon
 	return m, nil
 }
 
+func (c *userServiceClient) GetUserInfoByBothSideStream(ctx context.Context, opts ...grpc.CallOption) (UserService_GetUserInfoByBothSideStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_UserService_serviceDesc.Streams[2], "/services.UserService/GetUserInfoByBothSideStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &userServiceGetUserInfoByBothSideStreamClient{stream}
+	return x, nil
+}
+
+type UserService_GetUserInfoByBothSideStreamClient interface {
+	Send(*UserRequest) error
+	Recv() (*UserResponse, error)
+	grpc.ClientStream
+}
+
+type userServiceGetUserInfoByBothSideStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *userServiceGetUserInfoByBothSideStreamClient) Send(m *UserRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *userServiceGetUserInfoByBothSideStreamClient) Recv() (*UserResponse, error) {
+	m := new(UserResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 type UserServiceServer interface {
 	GetUsersInfo(context.Context, *UserRequest) (*UserResponse, error)
 	GetUserInfoByServerStream(*UserRequest, UserService_GetUserInfoByServerStreamServer) error
 	GetUserInfoByClientStream(UserService_GetUserInfoByClientStreamServer) error
+	GetUserInfoByBothSideStream(UserService_GetUserInfoByBothSideStreamServer) error
 }
 
 // UnimplementedUserServiceServer can be embedded to have forward compatible implementations.
@@ -362,6 +402,9 @@ func (*UnimplementedUserServiceServer) GetUserInfoByServerStream(*UserRequest, U
 }
 func (*UnimplementedUserServiceServer) GetUserInfoByClientStream(UserService_GetUserInfoByClientStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetUserInfoByClientStream not implemented")
+}
+func (*UnimplementedUserServiceServer) GetUserInfoByBothSideStream(UserService_GetUserInfoByBothSideStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetUserInfoByBothSideStream not implemented")
 }
 
 func RegisterUserServiceServer(s *grpc.Server, srv UserServiceServer) {
@@ -433,6 +476,32 @@ func (x *userServiceGetUserInfoByClientStreamServer) Recv() (*UserRequest, error
 	return m, nil
 }
 
+func _UserService_GetUserInfoByBothSideStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(UserServiceServer).GetUserInfoByBothSideStream(&userServiceGetUserInfoByBothSideStreamServer{stream})
+}
+
+type UserService_GetUserInfoByBothSideStreamServer interface {
+	Send(*UserResponse) error
+	Recv() (*UserRequest, error)
+	grpc.ServerStream
+}
+
+type userServiceGetUserInfoByBothSideStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *userServiceGetUserInfoByBothSideStreamServer) Send(m *UserResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *userServiceGetUserInfoByBothSideStreamServer) Recv() (*UserRequest, error) {
+	m := new(UserRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 var _UserService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "services.UserService",
 	HandlerType: (*UserServiceServer)(nil),
@@ -451,6 +520,12 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "GetUserInfoByClientStream",
 			Handler:       _UserService_GetUserInfoByClientStream_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "GetUserInfoByBothSideStream",
+			Handler:       _UserService_GetUserInfoByBothSideStream_Handler,
+			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},

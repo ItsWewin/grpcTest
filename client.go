@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"google.golang.org/grpc"
+	"io"
 	"log"
 	"mayihahah.com/grpc/helper"
 	"mayihahah.com/grpc/services"
@@ -22,7 +22,7 @@ func main() {
 	defer conn.Close()
 
 	userClient := services.NewUserServiceClient(conn)
-	stream, err := userClient.GetUserInfoByClientStream(context.Background())
+	stream, err := userClient.GetUserInfoByBothSideStream(context.Background())
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -38,11 +38,17 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-	}
-	resp, err := stream.CloseAndRecv()
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	fmt.Println(resp.Users)
+		resp, err := stream.Recv()
+		switch {
+		case err == io.EOF:
+			log.Println("succeed")
+		case err != nil:
+
+
+			log.Fatal(err)
+
+		}
+		log.Println(resp.Users)
+	}
 }
